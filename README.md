@@ -2,175 +2,185 @@
 
 <div align="center">
 
-**Procurement, with proof.**  
-*An autonomous B2B sourcing, milestone-payment, shipment-tracking, and SLA-recovery workspace.*  
-*Built for the **PayPal AI Hackathon 2026**.*
+### Autonomous B2B Sourcing, Milestone Payments & SLA Recovery on PayPal Sandbox
 
-[![PayPal AI Hackathon 2026](https://img.shields.io/badge/PayPal_Hackathon-2026-003087?style=flat&logo=paypal&logoColor=white)](https://devpost.com)
-[![Next.js 16](https://img.shields.io/badge/Next.js-16.4_App_Router-black?style=flat&logo=next.js)](https://nextjs.org)
-[![TypeScript 5](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+*An auditable multi-agent workspace built for the **PayPal AI Hackathon 2026**.*
+
+[![PayPal Sandbox](https://img.shields.io/badge/PayPal-6_REST_APIs-003087?style=flat&logo=paypal&logoColor=white)](https://developer.paypal.com)
+[![PayPal Agent Toolkit](https://img.shields.io/badge/@paypal/agent--toolkit-1.11.0-0079C1?style=flat&logo=paypal)](https://github.com/paypal/agent-toolkit)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.4_Turbopack-black?style=flat&logo=next.js)](https://nextjs.org)
+[![TypeScript 5](https://img.shields.io/badge/TypeScript-5.0_Strict-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![AG Grid](https://img.shields.io/badge/AG_Grid-v36_Quartz-E0234E?style=flat)](https://www.ag-grid.com)
 [![Channel3](https://img.shields.io/badge/Channel3-MCP_%26_REST-7C3AED?style=flat)](https://trychannel3.com)
 [![Render](https://img.shields.io/badge/Render-Blueprint_Ready-46E3B7?style=flat&logo=render&logoColor=black)](https://render.com)
-[![Tests Passing](https://img.shields.io/badge/Tests-12%2F12_Passing-brightgreen?style=flat)](scripts/lifecycle.test.ts)
+[![Tests](https://img.shields.io/badge/Tests-12%2F12_Passing-brightgreen?style=flat)](scripts/lifecycle.test.ts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 </div>
 
 ---
 
-## Workspace Showcase
+## The System at a Glance
 
-### 1. Executive Procurement Ledger & Spend Analytics
-*Interactive enterprise AG Grid ledger with custom financial renderers, AG Charts spend distribution, and real-time telemetry inspector:*
-
-![PactPay Autonomous B2B Procurement Workspace](artifacts/pactpay-dashboard.jpg)
-
-### 2. Autonomous 4-Step Autopilot Execution
-*Live screenshot of all 4 autonomous stages completed: multi-vendor quote selection via Channel3, milestone invoicing, carrier shipment tracking, and an automated $524.69 SLA rebate recovery:*
+### 1. The Completed 4-Step Autonomous Autopilot
+*All 4 stages executed end-to-end: live supplier benchmarking (`walmart.com`), milestone reference invoice, carrier tracking attachment, and an automated **$524.69 SLA rebate** recovered via PayPal Captures Refund v2:*
 
 ![PactPay 4-Step Autopilot Completed](artifacts/pactpay-completed-run.jpg)
 
+### 2. Enterprise Procurement Ledger & Telemetry Inspector
+*AG Grid enterprise ledger with live AG Charts spend allocation, custom financial renderers, and real-time inspectable PayPal HTTP request/response telemetry:*
+
+![PactPay Autonomous B2B Procurement Workspace](artifacts/pactpay-dashboard.jpg)
+
 ---
 
-## Key Performance & Verification Metrics
+## Verified Engineering Metrics
 
-| Metric | Measured Value | Verification Details |
+| Dimension | Metric | Implementation & Source |
 |---|---|---|
-| **Autonomous Step Handoff** | **1.8 seconds** | Pipeline advances autonomously between stages after verification checks clear. |
-| **Contractual SLA Recovery** | **15.00% / $524.69** | Calculated mathematically from contract terms; refunded via PayPal Captures Refund v2. |
-| **PayPal API Families Chained** | **6 REST APIs** | Catalog v1, Invoicing v2, Orders v2, Shipping Trackers v1, Captures Refund v2, Disputes v1. |
-| **Quote Benchmarking Breadth** | **3 Live Vendors** | Evaluated concurrently on unit price, MOQ, delivery history, warranty, and SLA penalty rebate. |
-| **Financial Invariant Tests** | **12 / 12 Passing** | Currency serialization, idempotency locking, session isolation, and token redaction verified. |
-| **Intent Extraction Latency** | **0 ms / Zero-Cost** | Resilient deterministic intent engine with zero API costs; falls back cleanly if LLM keys are absent. |
-| **Telemetry & Secret Leaks** | **0 Leaks** | OAuth secrets, access tokens, and payer IDs are redacted before writing to telemetry. |
+| **Chained PayPal REST APIs** | **6 API families** | Catalog v1, Invoicing v2, Orders v2, Shipping Trackers v1, Captures Refund v2, Disputes v1 ([`src/lib/paypal/client.ts`](src/lib/paypal/client.ts)). |
+| **Contractual SLA Recovery** | **15.00% / $524.69** | Calculated from agreed contract terms; settled via `POST /v2/payments/captures/{id}/refund`. |
+| **Automated Step Handoff** | **1,800 ms** | Deterministic state machine pacing between lifecycle stages for inspectable execution. |
+| **Financial Invariant Tests** | **12 / 12 passing** | Node.js native test runner verifying currency formatting, idempotency, session isolation, and token redaction ([`scripts/lifecycle.test.ts`](scripts/lifecycle.test.ts)). |
+| **Money Arithmetic Precision** | **Integer cents** | `Math.round(usd * 100)` arithmetic avoiding floating-point drift; serialized as exact two-decimal strings (`3499.90`). |
+| **Idempotency Protection** | **SHA-256 keys** | `PayPal-Request-Id` derived from operation keys to prevent duplicate captures/refunds on network retries. |
+| **Invoice Reference Limit** | **≤ 25 characters** | Invoice numbers format `PP-` + 6 timestamp digits + random entropy to satisfy PayPal Invoicing v2 schema constraint. |
+| **Zero-Secret Resilience** | **0 API keys needed** | Resilient deterministic intent engine with zero API costs; allows full judge evaluation without external credentials. |
 
 ---
 
-## Unique Selling Propositions (USPs)
+## Why PactPay Wins (Unique Selling Propositions)
 
-1. **Beyond Chatbots — Real Financial Execution with Human-in-the-Loop Guardrails**  
-   Most AI hackathon projects stop at generating conversational text. PactPay executes real corporate actions: provisioning catalog items, issuing invoices, capturing orders, and tracking freight. Crucially, it respects **CFO Spend Guardrails**: purchases under the budget limit auto-clear; purchases exceeding the threshold pause for explicit human CFO sign-off.
+### 1. Autonomous Execution with Hard Spend Guardrails (No Unchecked AI)
+Most hackathon projects are simple chatbots that offer suggestions. PactPay executes actual financial state changes through authenticated APIs. However, enterprise treasuries cannot give an LLM unchecked access to corporate funds:
+- **Under Limit (e.g. ≤ $15,000)**: The Treasury Agent auto-clears the spend guardrail and captures payment.
+- **Over Limit**: The agent **halts execution** and requires explicit human CFO authorization before triggering checkout.
 
-2. **Closed-Loop Contractual SLA Recovery**  
-   In enterprise procurement, when a shipment arrives 48 hours late or with carton damage, recovering contractual penalty rebates takes weeks of manual emails. PactPay links carrier tracking exceptions directly to **PayPal Captures Refund v2**, issuing an instant partial refund to the buyer without manual claim filings.
+### 2. Closed-Loop SLA Recovery (The Unsolved B2B Problem)
+When an enterprise shipment arrives 48 hours late or damaged in transit, wholesale contracts typically include penalty clauses (e.g., 10%–15% rebate). In practice, because logistics tracking (FedEx/UPS) and financial ledgers (PayPal/ERP) live in isolated silos, these penalties are rarely recovered.  
+PactPay bridges this disconnect: the SLA Auditor monitors carrier events, computes the exact penalty amount, and automatically triggers **PayPal Captures Refund v2**, depositing the penalty back into the buyer's account without manual dispute paperwork.
 
-3. **Tamper-Evident Evidence Dossier**  
-   Every API call, HTTP status, request hash, timestamp, and carrier report is compiled into a downloadable audit dossier (`JSON`). Teams have an unshakeable audit trail linking the original invoice, checkout capture, carrier tracking ID, and refund transaction.
+### 3. Tamper-Evident Audit Dossier
+Every action generates structured evidence: product IDs, invoice URLs, capture transaction IDs, carrier tracking numbers, and refund receipts. The system packages these into a downloadable, timestamped **Audit Evidence JSON** dossier linking the entire chain from initial quote to final settlement.
 
-4. **Natural-Language Enterprise Ledger (AG Studio Pattern)**  
-   Users don't need to manually configure column filters. Simply type plain-English queries into the AG Studio query bar—such as *"show orders over $5,000"*, *"awaiting approval"*, or *"filter to SLA refunded"*—and AG Grid dynamically updates its views.
-
-5. **Zero-Friction Judge Experience**  
-   Judges can evaluate the full application without setting up paid OpenAI or PayPal developer credentials. PactPay includes a deterministic simulation mode that exercises all 6 PayPal API schemas and 4 pre-seeded lifecycle scenarios out-of-the-box.
-
----
-
-## The Problem & The Solution
-
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ The Legacy Enterprise Nightmare:                                                       │
-│ Sourcing Spreadsheets  ──>  AP Invoicing Portal  ──>  Carrier Tracking  ──>  Lost SLAs │
-│ (Vendor emails)             (Disconnected)            (Manual tracking)     (Unrecovered)│
-└────────────────────────────────────────────────────────────────────────────────────────┘
-                                           │
-                                     PactPay Solution
-                                           ▼
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ Autonomous Procurement Workspace:                                                      │
-│ 1. Sourcing Agent    ──> 2. Treasury Agent   ──> 3. Fulfillment  ──> 4. SLA Auditor   │
-│ (Channel3 Live MCP)      (PayPal Invoicing)      (PayPal Trackers)    (PayPal Refund) │
-│                                                                                        │
-│ └───────────────> Verified Financial Ledger (AG Grid + AG Charts) <──────────────────┘│
-└────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-- **Fragmented Data**: Procurement teams waste hours reconciling supplier quotes against accounts payable and freight tracking dashboards.
-- **Unenforced Contracts**: B2B wholesale contracts often specify SLA penalty clauses (e.g., 10%–15% rebate for damaged delivery or delays), but lack of automated linkage between tracking and payment means these funds are rarely recovered.
-- **PactPay's Fix**: An autonomous multi-agent pipeline that unifies vendor selection, invoice issuance, spend guardrails, payment capture, carrier tracking, and automated SLA recovery into a single auditable workspace.
+### 4. Natural-Language Financial Ledger (AG Studio Pattern)
+Rather than wrestling with multi-column filter menus, finance teams can query the live AG Grid ledger using plain English:
+- `"show orders over $5,000"`
+- `"awaiting approval"`
+- `"filter to SLA refunded"`
+- `"sort largest first"`
 
 ---
 
-## Three-Agent Autonomous Architecture
+## Architecture: Three Specialist Agents
 
 ```mermaid
 flowchart LR
-    Request[Procurement Request] --> Sourcing[01 / Sourcing Agent]
-    Sourcing --> Channel3[Channel3 MCP / REST]
-    Channel3 --> Quotes[3 Benchmarked Quotes]
-    Quotes --> Catalog[PayPal Catalog v1]
-    Catalog --> Treasury[02 / Treasury Agent]
-    Treasury --> Invoice[PayPal Invoicing v2]
-    Invoice --> Guardrail{Spend Guardrail}
-    Guardrail -->|Exceeds Limit| CFO[Explicit CFO Authorization]
-    CFO --> Order[Checkout Orders v2]
-    Guardrail -->|Within Limit| Order
-    Order --> Buyer[Sandbox Buyer Approval]
-    Buyer --> Capture[Capture Approved Order]
-    Capture --> Tracking[Shipping Trackers v1]
-    Tracking --> Auditor[03 / SLA Auditor Agent]
-    Auditor --> Refund[Captures Refund v2]
-    Refund --> Disputes[Customer Disputes v1]
-    Disputes --> Evidence[Tamper-Evident Evidence Dossier]
-    Evidence --> Ledger[AG Grid Ledger & AG Charts]
+    subgraph SOURCING_PHASE["01 / Sourcing Phase"]
+        Request["Procurement Request\n(Text Prompt)"] --> Sourcing["01 / SOURCING AGENT\n(Intent Parser)"]
+        Sourcing --> C3["Channel3 API / MCP\n(Quote Discovery)"]
+        C3 --> Bench["Benchmark 3 Quotes\n(Price, MOQ, SLA, Warranty)"]
+    end
+
+    subgraph TREASURY_PHASE["02 / Treasury Phase"]
+        Bench --> Catalog["PayPal Catalog v1\n(POST /v1/catalogs/products)"]
+        Catalog --> Treasury["02 / TREASURY AGENT\n(Spend Evaluator)"]
+        Treasury --> Invoice["PayPal Invoicing v2\n(POST /v2/invoicing/invoices)"]
+        Invoice --> Guardrail{"Spend Guardrail\nThreshold Check"}
+        Guardrail -->|"Exceeds Limit"| CFO["Explicit CFO Authorization\n(Human-in-the-Loop)"]
+        Guardrail -->|"Within Limit"| Orders["PayPal Orders v2\n(POST /v2/checkout/orders)"]
+        CFO --> Orders
+        Orders --> Capture["Capture Payment\n(POST .../capture)"]
+    end
+
+    subgraph AUDIT_PHASE["03 / SLA Audit Phase"]
+        Capture --> Trackers["PayPal Shipping Trackers v1\n(POST /v1/shipping/trackers-batch)"]
+        Trackers --> Auditor["03 / SLA AUDITOR AGENT\n(Fulfillment Exception Monitor)"]
+        Auditor --> Exception{"Carrier Exception\nDetected?"}
+        Exception -->|"Damage / Delay"| Refund["PayPal Captures Refund v2\n(POST .../refund)"]
+        Refund --> Disputes["PayPal Customer Disputes v1\n(GET /v1/customer/disputes)"]
+        Disputes --> Dossier["Tamper-Evident Audit Dossier\n(Downloadable JSON)"]
+    end
+
+    Dossier --> Ledger["AG Grid Financial Ledger & AG Charts"]
 ```
 
-### Specialist Agent Responsibilities:
-- **01 / Sourcing Agent**: Interprets natural language requests, formulates search queries across the **Channel3** supplier network, benchmarks 3 competing quotes across price, MOQ, delivery history, warranty, and SLA terms, and selects the optimal vendor.
-- **02 / Treasury Agent**: Registers winning items in **PayPal Catalog v1**, generates itemized **PayPal Invoicing v2** reference invoices with QR codes, evaluates corporate spend limits, and orchestrates **Checkout Orders v2** payment capture.
-- **03 / SLA Auditor Agent**: Binds carrier tracking to the payment capture via **PayPal Shipping Trackers v1**. When an exception is logged (damage or delay), it calculates the exact contractual penalty, executes an automated partial refund via **PayPal Captures Refund v2**, probes **Customer Disputes v1**, and compiles a downloadable evidence dossier.
+### Agent Responsibilities & Code Locations:
+
+1. **01 / Sourcing Agent** ([`src/lib/agents/workflow.ts`](src/lib/agents/workflow.ts)):
+   - Parses unstructured requests into structured schema: category, quantity, unit price ceiling, and department.
+   - Queries **Channel3** REST or hosted MCP (`mcp.trychannel3.com`) for multi-vendor catalog data.
+   - Evaluates quotes across 5 parameters: unit price, MOQ, historical on-time delivery rate, warranty years, and contractual SLA penalty percentage.
+2. **02 / Treasury Agent** ([`src/lib/paypal/client.ts`](src/lib/paypal/client.ts)):
+   - Registers the winning SKU as a physical product in **PayPal Catalog v1**.
+   - Issues an itemized reference invoice with QR code via **PayPal Invoicing v2**.
+   - Enforces the corporate spend guardrail (auto-clear vs CFO escalation).
+   - Generates and captures milestone payments using **PayPal Checkout Orders v2**.
+3. **03 / SLA Auditor Agent** ([`src/lib/agents/workflow.ts`](src/lib/agents/workflow.ts)):
+   - Binds carrier tracking metadata to the completed capture ID via **PayPal Shipping Trackers v1**.
+   - Upon a fulfillment exception (carrier scan showing damage or delay), evaluates the contractual penalty clause.
+   - Issues an automated partial refund via **PayPal Captures Refund v2** and verifies state against **PayPal Customer Disputes v1**.
 
 ---
 
 ## Six Chained PayPal REST APIs
 
-| PayPal API Family | Endpoint & Operation | Lifecycle Role & Stored Evidence |
-|---|---|---|
-| **Catalog v1** | `POST /v1/catalogs/products` | Registers physical SKU with PayPal; stores generated product ID. |
-| **Invoicing v2** | `POST /v2/invoicing/invoices`<br>`POST /v2/invoicing/invoices/{id}/send` | Generates reference invoice with line items, tax-inclusive handling, QR code, and PayPal invoice URL. |
-| **Checkout Orders v2** | `POST /v2/checkout/orders`<br>`POST /v2/checkout/orders/{id}/capture` | Creates checkout order with custom ID linking invoice; captures funds upon buyer authorization. |
-| **Shipping Trackers v1** | `POST /v1/shipping/trackers-batch` | Binds carrier name (FedEx, UPS, DHL) and tracking number directly to capture transaction ID. |
-| **Captures Refund v2** | `POST /v2/payments/captures/{id}/refund` | Executes partial refund based on contract penalty percentage (e.g. 15%); stores refund receipt. |
-| **Customer Disputes v1** | `GET /v1/customer/disputes` | Probes dispute state and compiles local tamper-evident audit dossier linking invoice, order, and refund. |
+PactPay does not treat PayPal as a generic payment gateway; it chains six distinct Sandbox API families into an automated B2B procurement lifecycle:
+
+| API Family | Endpoint Called | Purpose in Workflow | Stored Evidence |
+|---|---|---|---|
+| **Catalog v1** | `POST /v1/catalogs/products` | Creates physical procurement product definition in merchant catalog. | `paypalCatalogId` (e.g. `PROD-...`) |
+| **Invoicing v2** | `POST /v2/invoicing/invoices`<br>`POST /v2/invoicing/invoices/{id}/send` | Generates itemized invoice with line items, tax handling, payment note, and QR code reference. | `paypalInvoiceId`, `paypalInvoiceNumber`, `paypalInvoiceUrl` |
+| **Checkout Orders v2** | `POST /v2/checkout/orders`<br>`POST /v2/checkout/orders/{id}/capture` | Authorizes purchase unit tied to custom invoice ID; captures payment upon buyer approval. | `paypalOrderId`, `paypalCaptureId` |
+| **Shipping Trackers v1** | `POST /v1/shipping/trackers-batch` | Binds carrier code (`FEDEX`, `UPS`, `DHL`) and tracking number directly to capture transaction ID. | `trackingNumber`, `carrier`, `shipmentStatus` |
+| **Captures Refund v2** | `POST /v2/payments/captures/{id}/refund` | Programmatically executes partial refund matching contractual SLA penalty percentage (e.g. 15%). | `paypalRefundId`, `refundStatus`, `slaRefundAmountUsd` |
+| **Customer Disputes v1** | `GET /v1/customer/disputes` | Reads dispute registry to compile a comprehensive, tamper-evident audit evidence packet. | `disputeDossier` (tamper-evident JSON) |
+
+### PayPal Agent Toolkit & MCP Server
+- **`@paypal/agent-toolkit/ai-sdk` Integration**: Wired in [`src/lib/paypal/agent-tools.ts`](src/lib/paypal/agent-tools.ts#L8-L39), adapting toolkit tools to Vercel AI SDK 7.
+- **Standalone PayPal MCP Server**: [`scripts/paypal-mcp.mjs`](scripts/paypal-mcp.mjs) implements a Model Context Protocol server exposing read-only PayPal invoice and dispute tools over `stdio` for agent clients like Claude Desktop.
 
 ---
 
 ## Mandatory Sponsor Integration Statement
 
-| Sponsor / Prize Category | Prize Amount | Implementation & Scope in PactPay |
+This project was built to strictly meet the technical requirements of the **PayPal AI Hackathon 2026** and its sponsor categories:
+
+| Sponsor Category | Implementation Scope in PactPay | Key Code Artifacts |
 |---|---|---|
-| **PayPal Developer Platform** | **Main Track** | Chained 6 PayPal Sandbox REST API families with OAuth2 client-credentials authentication. Integrated `@paypal/agent-toolkit/ai-sdk` (adapted to AI SDK 7) and `@paypal/paypal-server-sdk`. Provided a standalone **PayPal MCP Server** (`scripts/paypal-mcp.mjs`) for Model Context Protocol agent clients. |
-| **AG Grid** | **$5,000 Category** | Enterprise `ag-grid-react` table using customized light `themeQuartz`, custom financial cell renderers, dynamic sorting/filtering, and interactive spend analytics powered by `ag-charts-react`. Implements the **AG Studio Agent Pattern** via a natural-language query bar. |
-| **Channel3** | **$1,500 Category** | Multi-supplier discovery and price benchmarking via Channel3 REST API (`api.trychannel3.com/v1/search`) and hosted MCP server (`mcp.trychannel3.com`). Candidate quotes show unit prices, stock counts, lead times, warranties, and contractual SLA terms. |
-| **APIMatic** | **$1,000 Category** | PayPal APIMatic-generated SDK spec alignment. Enforces strict currency serialization (exact 2-decimal USD), integer-cent arithmetic, and SHA-256 idempotency locks (`PayPal-Request-Id`) across all mutation operations. |
-| **Render** | **$1,000 Category** | Production-ready `render.yaml` Node Web Service blueprint with zero-secret demo fallback, automatic build/start commands, and environment variable configuration. |
-| **AI Models Used** | **AI Engineering** | **Vercel AI SDK 7** runtime intent parsing. Supports **OpenAI GPT-6 Luna / GPT-4o** via structured Responses API (`store: false`) and **Anthropic Claude 3.5 Sonnet**. Includes an intelligent **Deterministic Intent Engine** that extracts parameters with 0ms latency when no API keys are present. |
+| **PayPal Developer Platform** *(Main Track)* | Chained 6 PayPal Sandbox REST API families, integrated `@paypal/agent-toolkit/ai-sdk`, and implemented a local PayPal Model Context Protocol server. | [`src/lib/paypal/client.ts`](src/lib/paypal/client.ts)<br>[`src/lib/paypal/agent-tools.ts`](src/lib/paypal/agent-tools.ts)<br>[`scripts/paypal-mcp.mjs`](scripts/paypal-mcp.mjs) |
+| **AG Grid** *($5,000 Sponsor Category)* | Enterprise grid (`ag-grid-react`) using `themeQuartz`, custom financial cell renderers (status badges, formatted currency, product previews), AG Charts (`ag-charts-react`) spend visualization, and an AG Studio natural-language query bar. | [`src/components/dashboard/PactPayDashboard.tsx`](src/components/dashboard/PactPayDashboard.tsx#L275-L390) |
+| **Channel3** *($1,500 Sponsor Category)* | Multi-supplier catalog discovery and live price benchmarking using the Channel3 search API (`https://api.trychannel3.com/v1/search`) and hosted MCP endpoint (`https://mcp.trychannel3.com/`). | [`src/lib/channel3/client.ts`](src/lib/channel3/client.ts) |
+| **APIMatic** *($1,000 Sponsor Category)* | Spec alignment with PayPal's APIMatic-generated SDK. Enforces strict schema validations, exact two-decimal USD serialization, integer-cent arithmetic, and SHA-256 idempotency locks (`PayPal-Request-Id`). | [`src/lib/paypal/client.ts`](src/lib/paypal/client.ts#L238-L243)<br>[`scripts/lifecycle.test.ts`](scripts/lifecycle.test.ts) |
+| **Render** *($1,000 Sponsor Category)* | Production-ready `render.yaml` infrastructure-as-code blueprint defining build commands, start commands, Node version (22.16.0), and environment variables. | [`render.yaml`](render.yaml) |
+| **AI Models Used** | **Vercel AI SDK 7** runtime intent parsing. Supports **OpenAI GPT-6 Luna / GPT-4o** with structured object output (`store: false`) and **Anthropic Claude 3.5 Sonnet**. Includes an intelligent **Deterministic Intent Engine** for zero-latency, zero-cost fallback. | [`src/lib/agents/workflow.ts`](src/lib/agents/workflow.ts#L71-L108) |
 
 ---
 
 ## 60-Second Judge Walkthrough
 
-1. **Explore the Pre-Seeded Ledger**:
-   - Inspect the 4 initial orders in the AG Grid ledger.
-   - Notice that Order 1 requires explicit CFO approval, while Order 4 shows a completed **$1,974.00** SLA recovery on a **$13,160.00** industrial scanner purchase.
-2. **Run the 4-Step Autopilot**:
-   - Click the blue **"Run full 4-step autopilot"** button in the walkthrough bar.
-   - Watch the 3 specialist agents automatically advance at 1.8-second intervals:
-     - *Step 1*: Sourcing compares 3 Channel3 quotes, selects the optimal vendor, and issues a PayPal reference invoice.
-     - *Step 2*: Treasury clears the $15,000 spend guardrail and captures payment.
-     - *Step 3*: Fulfillment binds FedEx tracking to the capture ID.
-     - *Step 4*: SLA Auditor logs an exception report and issues a 15% partial refund via PayPal Captures Refund v2.
-3. **Test the AG Studio Natural-Language Query Bar**:
-   - Type commands into the search bar:
+Judges can test the entire workflow with **zero credentials or configuration required**:
+
+1. **Load Workspace**: Open [http://localhost:3000](http://localhost:3000). Inspect the 4 pre-seeded demo purchase orders covering all lifecycle states:
+   - Order `PO-2026-4091`: Paused at `AWAITING_CFO_APPROVAL` (demonstrating spend guardrail enforcement).
+   - Order `PO-2026-4094`: Settled at `4_SLA_SETTLED` with **$1,974.00** recovered on a **$13,160.00** purchase.
+2. **Trigger 4-Step Autopilot**:
+   - Click **Run full 4-step autopilot** with the default $15,000 guardrail.
+   - Watch the 3 agents autonomously advance at 1.8-second intervals:
+     - Sourcing benchmarks 3 quotes and issues a milestone invoice.
+     - Treasury validates the spend guardrail and captures payment.
+     - Fulfillment attaches carrier tracking.
+     - SLA Auditor detects an exception and recovers a 15% penalty rebate.
+3. **Test Natural Language Ledger Queries**:
+   - In the AG Studio search bar above the grid, type:
      - `show orders over $5,000`
      - `awaiting approval`
      - `filter to SLA refunded`
      - `sort largest first`
-   - Observe AG Grid updating its filters and sorting live.
+   - AG Grid dynamically updates its column filters and sorting rules.
 4. **Inspect Telemetry & Audit Dossier**:
-   - Switch to the **API telemetry & sandbox logs** tab to view raw HTTP request and response payloads, status codes, and execution latencies.
-   - Click **Download evidence JSON** on any completed order to inspect the tamper-evident audit packet.
+   - Switch to the **API telemetry & sandbox logs** tab to view exact HTTP methods, endpoints, status codes, and execution latencies.
+   - Click on any completed order and select **Download evidence JSON** to inspect the compiled audit dossier.
 
 ---
 
@@ -179,35 +189,35 @@ flowchart LR
 Requires **Node.js 22.16+** and **npm**.
 
 ```bash
-# 1. Clone the repository
+# 1. Clone repository
 git clone https://github.com/amogh2222/pactpay.git
 cd pactpay
 
 # 2. Install dependencies
 npm install
 
-# 3. Set up environment (empty secrets enable deterministic simulation)
+# 3. Create environment file (empty credentials default to deterministic simulation)
 cp .env.example .env.local
 
-# 4. Start development server
+# 4. Start local development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Visit [http://localhost:3000](http://localhost:3000).
 
-### Quality & Invariant Verification Suite
+### Invariant & Test Verification
 
 ```bash
-# Run the 12 invariant tests
+# Run unit and invariant tests (12 tests)
 npm test
 
-# Run TypeScript type check
+# Run TypeScript compilation check
 npm run typecheck
 
 # Run ESLint check
 npm run lint
 
-# Run production build
+# Run optimized production build
 npm run build
 
 # Run PayPal Sandbox CLI verifier
@@ -216,80 +226,52 @@ node scripts/verify-paypal-sandbox.mjs
 
 ---
 
-## PayPal Sandbox CLI Verification
-
-PactPay includes an automated CLI test script for PayPal Sandbox:
-
-```bash
-# Test OAuth connection and read-only probes
-node scripts/verify-paypal-sandbox.mjs
-
-# Execute full live $10.00 lifecycle purchase with synthetic 15% ($1.50) refund
-node scripts/verify-paypal-sandbox.mjs --execute
-```
-
-*With empty credentials, results explicitly display `SIMULATED` to maintain complete audit transparency.*
-
----
-
-## Standalone PayPal MCP Server
-
-For developers connecting local AI agent clients (such as Claude Desktop or Cursor) to PayPal Sandbox tools:
-
-```bash
-node scripts/paypal-mcp.mjs
-```
-
-Exposes standard Model Context Protocol tools (`paypal_list_invoices`, `paypal_list_disputes`) over `stdio`.
-
----
-
 ## Deploy to Render
 
-PactPay is pre-configured for one-click deployment via Render Blueprints:
+PactPay includes a Render Blueprint for one-click web service deployment:
 
 1. Push this repository to your GitHub account.
-2. In the [Render Dashboard](https://dashboard.render.com), click **New → Blueprint** and select your repository.
-3. Render detects [`render.yaml`](file:///Users/amogh/pactpay/render.yaml) and configures the Node Web Service.
-4. Set `NEXT_PUBLIC_APP_URL` to your Render service URL (e.g. `https://pactpay.onrender.com`).
-5. Render automatically executes `npm install && npm run build`, followed by `npm run start`.
+2. In the [Render Dashboard](https://dashboard.render.com), click **New → Blueprint** and select the repository.
+3. Render reads [`render.yaml`](render.yaml) and provisions the Node.js web service.
+4. Configure `NEXT_PUBLIC_APP_URL` to your Render HTTPS URL.
+5. Deploy and access your live workspace.
 
 ---
 
-## Project Architecture & Directory Map
+## Project Structure
 
 ```
 pactpay/
-├── artifacts/                     # Screenshots and visual assets
-│   ├── pactpay-dashboard.jpg      # Full workspace & AG Grid ledger
-│   └── pactpay-completed-run.jpg  # 4-step autopilot completed run
-├── public/                        # Static assets & product SVG placeholders
-├── render.yaml                    # Render Blueprint deployment specification
+├── artifacts/                         # Verified screenshots & visual evidence
+│   ├── pactpay-completed-run.jpg      # Live 4-step autopilot completed run
+│   └── pactpay-dashboard.jpg          # AG Grid ledger & spend distribution
+├── render.yaml                        # Render Blueprint specification
 ├── scripts/
-│   ├── lifecycle.test.ts          # 12 financial invariant and simulation tests
-│   ├── verify-paypal-sandbox.mjs  # CLI PayPal Sandbox verification script
-│   └── paypal-mcp.mjs             # Standalone Model Context Protocol server
+│   ├── lifecycle.test.ts              # Financial invariant & state machine tests
+│   ├── intent.test.ts                 # Natural language intent parsing tests
+│   ├── verify-paypal-sandbox.mjs      # CLI PayPal Sandbox verification script
+│   └── paypal-mcp.mjs                 # Standalone Model Context Protocol server
 ├── src/
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── agent/procure/     # Sourcing agent & quote discovery endpoint
-│   │   │   ├── orders/            # Session ledger & telemetry retrieval
-│   │   │   ├── paypal/verify/     # PayPal OAuth verification probe
-│   │   │   └── paypal/workflow/   # 4-step autonomous lifecycle router
-│   │   ├── globals.css            # Light modern fintech design system
-│   │   ├── layout.tsx             # Root layout with fonts & metadata
-│   │   └── page.tsx               # Main dashboard entrypoint
+│   │   │   ├── agent/procure/         # Sourcing agent intent & quote endpoint
+│   │   │   ├── orders/                # Session store & telemetry retrieval
+│   │   │   ├── paypal/verify/         # PayPal OAuth2 connection probe
+│   │   │   └── paypal/workflow/       # 4-stage lifecycle state transition router
+│   │   ├── globals.css                # Custom fintech design system
+│   │   ├── layout.tsx                 # Root layout with fonts & metadata
+│   │   └── page.tsx                   # Main application entry point
 │   ├── components/
 │   │   └── dashboard/
-│   │       └── PactPayDashboard.tsx # AG Grid ledger, AG Charts, walkthrough, telemetry
+│   │       └── PactPayDashboard.tsx   # AG Grid, AG Charts, walkthrough, & drawer sheets
 │   └── lib/
-│       ├── agents/workflow.ts     # Multi-agent choreography & spend guardrails
-│       ├── channel3/client.ts     # Channel3 REST API & MCP client
+│       ├── agents/workflow.ts         # Agent state machine, schemas, & guardrails
+│       ├── channel3/client.ts         # Channel3 REST API & MCP client
 │       ├── paypal/
-│       │   ├── agent-tools.ts     # PayPal Agent Toolkit & AI SDK 7 adapter
-│       │   └── client.ts          # 6 PayPal REST API modules & SHA-256 locking
+│       │   ├── agent-tools.ts         # PayPal Agent Toolkit & AI SDK 7 adapter
+│       │   └── client.ts              # 6 PayPal REST modules, SHA-256 idempotency
 │       └── store/
-│           └── procurement-store.ts # Session store with 4 pre-seeded demo orders
+│           └── procurement-store.ts   # Session store & 4 pre-seeded demo orders
 └── package.json
 ```
 
@@ -297,13 +279,13 @@ pactpay/
 
 ## Disclosures & Compliance
 
-- **Sandbox Implementation**: PactPay is built for hackathon demonstration against PayPal Sandbox APIs. "Escrow" describes internal milestone ledger accounting; Checkout `CAPTURE` settles funds in the Sandbox environment immediately.
-- **Contract Assumptions**: Channel3 provides live retail discovery; wholesale B2B SLA terms (lead times, on-time rates, penalty percentages) are clearly disclosed in the UI as scenario assumptions (`termsVerified: false`).
-- **Data Protection**: API secrets and access tokens are strictly server-side or ephemeral in browser memory, and are completely redacted from telemetry and exported JSON dossiers.
+- **Sandbox Scope**: PactPay is a hackathon prototype exercising PayPal Sandbox REST endpoints. The term "escrow" describes internal milestone accounting; PayPal Checkout `CAPTURE` settles funds immediately in the Sandbox environment.
+- **Scenario Assumptions**: Retail discovery quotes are sourced live from Channel3; wholesale B2B terms (negotiated bulk SLAs, warranties, and penalties) are clearly disclosed in the UI as unverified procurement assumptions (`termsVerified: false`).
+- **Data Protection**: API secrets and credentials are stored strictly in server-side environment variables or ephemeral browser memory. Telemetry logs and exported JSON dossiers systematically redact tokens, secrets, and payer identifiers.
 
 ---
 
 ## License
 
-This project is open-source under the [MIT License](LICENSE).  
+This project is licensed under the [MIT License](LICENSE).  
 Copyright © 2026 Amogh Srivastava.
