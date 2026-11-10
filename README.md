@@ -6,6 +6,9 @@
 
 *An auditable multi-agent workspace built for the **PayPal AI Hackathon 2026**.*
 
+**Live Hosted Demo:** [https://pactpayon.vercel.app](https://pactpayon.vercel.app)
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-pactpayon.vercel.app-0070F3?style=flat&logo=vercel&logoColor=white)](https://pactpayon.vercel.app)
 [![PayPal Sandbox](https://img.shields.io/badge/PayPal-6_REST_APIs-003087?style=flat&logo=paypal&logoColor=white)](https://developer.paypal.com)
 [![PayPal Agent Toolkit](https://img.shields.io/badge/@paypal/agent--toolkit-1.11.0-0079C1?style=flat&logo=paypal)](https://github.com/paypal/agent-toolkit)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.4_Turbopack-black?style=flat&logo=next.js)](https://nextjs.org)
