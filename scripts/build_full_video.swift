@@ -22,42 +22,42 @@ let scenes: [SceneDef] = [
         imagePath: "artifacts/pactpay-architecture-4x3.png",
         title: "01 / ARCHITECTURE & THE B2B PROCUREMENT PROBLEM",
         subtitle: "Three Autonomous Agents • Six Chained PayPal Sandbox APIs • Contractual SLA Recovery",
-        durationSeconds: 32.62
+        durationSeconds: 38.66
     ),
     SceneDef(
         id: 2,
         imagePath: "artifacts/pactpay-dashboard.jpg",
         title: "02 / SOURCING AGENT & CHANNEL3 MULTI-VENDOR DISCOVERY",
         subtitle: "Natural Language Intent Parsing • Multi-Supplier Price, MOQ & SLA Benchmarking",
-        durationSeconds: 23.40
+        durationSeconds: 28.42
     ),
     SceneDef(
         id: 3,
         imagePath: "artifacts/pactpay-completed-run.jpg",
         title: "03 / TREASURY AGENT, PAYPAL INVOICING & CFO GUARDRAIL",
         subtitle: "PayPal Catalog v1 SKU Registration • Invoicing v2 with QR Reference • Spend Limit Check",
-        durationSeconds: 21.04
+        durationSeconds: 25.10
     ),
     SceneDef(
         id: 4,
         imagePath: "artifacts/pactpay-completed-run.jpg",
         title: "04 / CHECKOUT ORDERS v2 CAPTURE & SHIPPING TRACKERS v1",
         subtitle: "Milestone Payment Capture • Binding Carrier Tracking to PayPal Capture ID",
-        durationSeconds: 15.56
+        durationSeconds: 16.63
     ),
     SceneDef(
         id: 5,
         imagePath: "artifacts/pactpay-completed-run.jpg",
         title: "05 / SLA AUDITOR AGENT & $524.69 REFUND RECOVERY",
         subtitle: "Carrier Exception Detection • PayPal Captures Refund v2 Automated Penalty Rebate",
-        durationSeconds: 25.09
+        durationSeconds: 27.98
     ),
     SceneDef(
         id: 6,
         imagePath: "artifacts/pactpay-dashboard.jpg",
         title: "06 / AG GRID LEDGER, REAL-TIME TELEMETRY & LIVE DEMO",
         subtitle: "AG Studio Natural Language Query Bar • Downloadable Audit Dossier • pactpayon.vercel.app",
-        durationSeconds: 18.72
+        durationSeconds: 20.98
     )
 ]
 
