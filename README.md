@@ -72,7 +72,9 @@ Rather than wrestling with multi-column filter menus, finance teams can query th
 
 ---
 
-## Architecture: Three Specialist Agents
+## Architecture: Three Specialist Agents & Chained PayPal Engine
+
+![PactPay 4:3 Architecture Workflow](artifacts/pactpay-architecture-4x3.png)
 
 ```mermaid
 flowchart LR
