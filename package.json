@@ -6,12 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "tsx --test scripts/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "verify:paypal": "node scripts/verify-paypal-sandbox.mjs"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.99",
+    "@ai-sdk/openai": "^4.0.111",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@paypal/agent-toolkit": "^1.11.0",
+    "@paypal/paypal-server-sdk": "^2.5.0",
+    "ag-charts-community": "^14.3.0",
+    "ag-charts-react": "^14.3.0",
+    "ag-grid-community": "^36.3.0",
+    "ag-grid-react": "^36.3.0",
+    "ai": "^7.0.166",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.71.0",
     "next": "16.4.6",
+    "qrcode.react": "^4.2.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.2"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
@@ -20,7 +39,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "prettier": "^3.9.10",
     "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
