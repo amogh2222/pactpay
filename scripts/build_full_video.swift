@@ -22,42 +22,42 @@ let scenes: [SceneDef] = [
         imagePath: "artifacts/pactpay-architecture-4x3.png",
         title: "01 / ARCHITECTURE & THE B2B PROCUREMENT PROBLEM",
         subtitle: "Three Autonomous Agents • Six Chained PayPal Sandbox APIs • Contractual SLA Recovery",
-        durationSeconds: 29.70
+        durationSeconds: 32.62
     ),
     SceneDef(
         id: 2,
         imagePath: "artifacts/pactpay-dashboard.jpg",
         title: "02 / SOURCING AGENT & CHANNEL3 MULTI-VENDOR DISCOVERY",
         subtitle: "Natural Language Intent Parsing • Multi-Supplier Price, MOQ & SLA Benchmarking",
-        durationSeconds: 23.43
+        durationSeconds: 23.40
     ),
     SceneDef(
         id: 3,
         imagePath: "artifacts/pactpay-completed-run.jpg",
         title: "03 / TREASURY AGENT, PAYPAL INVOICING & CFO GUARDRAIL",
         subtitle: "PayPal Catalog v1 SKU Registration • Invoicing v2 with QR Reference • Spend Limit Check",
-        durationSeconds: 22.43
+        durationSeconds: 21.04
     ),
     SceneDef(
         id: 4,
         imagePath: "artifacts/pactpay-completed-run.jpg",
         title: "04 / CHECKOUT ORDERS v2 CAPTURE & SHIPPING TRACKERS v1",
         subtitle: "Milestone Payment Capture • Binding Carrier Tracking to PayPal Capture ID",
-        durationSeconds: 15.82
+        durationSeconds: 15.56
     ),
     SceneDef(
         id: 5,
         imagePath: "artifacts/pactpay-completed-run.jpg",
         title: "05 / SLA AUDITOR AGENT & $524.69 REFUND RECOVERY",
         subtitle: "Carrier Exception Detection • PayPal Captures Refund v2 Automated Penalty Rebate",
-        durationSeconds: 21.92
+        durationSeconds: 25.09
     ),
     SceneDef(
         id: 6,
         imagePath: "artifacts/pactpay-dashboard.jpg",
         title: "06 / AG GRID LEDGER, REAL-TIME TELEMETRY & LIVE DEMO",
         subtitle: "AG Studio Natural Language Query Bar • Downloadable Audit Dossier • pactpayon.vercel.app",
-        durationSeconds: 21.66
+        durationSeconds: 18.72
     )
 ]
 
@@ -127,7 +127,7 @@ let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawV
 var currentFrame: Int64 = 0
 let totalFrames = Int64(totalDuration * Double(fps))
 
-print("Rendering \(totalFrames) video frames...")
+print("Rendering \(totalFrames) video frames at 1x natural pace...")
 
 for (sceneIndex, scene) in scenes.enumerated() {
     let sceneFrameCount = Int64(scene.durationSeconds * Double(fps))
@@ -162,7 +162,7 @@ for (sceneIndex, scene) in scenes.enumerated() {
         ctx.setFillColor(red: 11.0/255.0, green: 15.0/255.0, blue: 25.0/255.0, alpha: 1.0)
         ctx.fill(CGRect(x: 0, y: 0, width: width, height: height))
         
-        // Subtle decorative gradient rect
+        // Subtle decorative gradient
         let gradientColors = [
             NSColor(red: 0.05, green: 0.10, blue: 0.22, alpha: 1.0).cgColor,
             NSColor(red: 0.02, green: 0.04, blue: 0.08, alpha: 1.0).cgColor
@@ -179,7 +179,7 @@ for (sceneIndex, scene) in scenes.enumerated() {
             let maxH: CGFloat = 860.0
             let scale = min(maxW / imgW, maxH / imgH)
             
-            // Subtle Ken Burns zoom effect (1.00 -> 1.02 over the scene)
+            // Subtle smooth zoom (1.00 -> 1.02 over scene)
             let progress = CGFloat(f) / CGFloat(sceneFrameCount)
             let zoom = 1.0 + (progress * 0.02)
             let finalW = imgW * scale * zoom
@@ -188,7 +188,7 @@ for (sceneIndex, scene) in scenes.enumerated() {
             let imgX = (CGFloat(width) - finalW) / 2.0
             let imgY: CGFloat = 80.0 + ((maxH - finalH) / 2.0)
             
-            // Draw drop shadow container
+            // Drop shadow container
             ctx.saveGState()
             ctx.setShadow(offset: CGSize(width: 0, height: -10), blur: 25, color: NSColor.black.withAlphaComponent(0.6).cgColor)
             ctx.setFillColor(NSColor(red: 0.1, green: 0.15, blue: 0.25, alpha: 1.0).cgColor)
@@ -208,7 +208,6 @@ for (sceneIndex, scene) in scenes.enumerated() {
         ctx.setFillColor(NSColor(red: 0.0, green: 0.44, blue: 0.73, alpha: 1.0).cgColor) // PayPal blue
         ctx.fill(CGRect(x: 0, y: 990, width: width, height: 3))
         
-        // Header Text using NSAttributedString
         let nsCtx = NSGraphicsContext(cgContext: ctx, flipped: false)
         NSGraphicsContext.current = nsCtx
         
@@ -327,4 +326,3 @@ exportSession.exportAsynchronously {
     exportSema.signal()
 }
 exportSema.wait()
-
